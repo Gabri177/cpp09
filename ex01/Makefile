@@ -1,7 +1,7 @@
-CFILE = main.cpp BitcoinExchange.cpp
+CFILE = main.cpp RPN.cpp
 OFILE = $(CFILE:.cpp=.o)
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = btc
+NAME = RPN
 
 all: $(NAME)
 
