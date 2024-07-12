@@ -17,6 +17,10 @@ class BitcoinExchange {
 	public:
 		void							readDataBaseFromFile(const std::string & file_name);
 		void							printValueExchanged(const std::string & input_file) const;
+										BitcoinExchange();
+										BitcoinExchange(const BitcoinExchange & obj);
+		BitcoinExchange &				operator=(const BitcoinExchange & obj);
+										~BitcoinExchange();
 };
 
 

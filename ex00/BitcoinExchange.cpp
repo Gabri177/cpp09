@@ -64,7 +64,7 @@ void									BitcoinExchange::printValueExchanged(const std::string & input_file
 					std::cout << "Error: not a positive number." << std::endl;
 					continue ;
 				}
-				if (this->getBitcoinRate(searchDate) * val> std::numeric_limits<double>::max()){
+				if (this->getBitcoinRate(searchDate) * val> std::numeric_limits<int>::max()){
 					
 					std::cout << "Error: too large a number." << std::endl;
 					continue ;
@@ -80,3 +80,15 @@ void									BitcoinExchange::printValueExchanged(const std::string & input_file
 
 	}
 }
+
+BitcoinExchange::BitcoinExchange(){}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange & obj){*this = obj;}
+
+BitcoinExchange &				BitcoinExchange::operator=(const BitcoinExchange & obj){
+
+	if (this != &obj)
+		_data = obj._data;
+	return *this;
+}
+BitcoinExchange::~BitcoinExchange(){}
