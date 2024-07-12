@@ -64,3 +64,16 @@ int						RPN::resultRPN(const std::string & evaluation){
 		throw std::runtime_error("Error");
 	return _temp.top();
 }
+
+
+RPN::RPN(){}
+
+RPN::RPN(const RPN & obj){*this = obj;}
+
+RPN::~RPN(){}
+
+RPN &					RPN::operator=(const RPN & obj){
+
+	(void)obj;
+	return *this;
+}

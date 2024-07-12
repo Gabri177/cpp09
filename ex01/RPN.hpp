@@ -11,6 +11,10 @@ class RPN {
 
 	public:
 		int						resultRPN(const std::string & evaluation);
+								RPN();
+								RPN(const RPN & obj);
+								~RPN();
+		RPN &					operator=(const RPN & obj);
 };
 
 #endif
