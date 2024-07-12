@@ -1,7 +1,7 @@
-CFILE = main.cpp RPN.cpp
+CFILE = main.cpp PmergeMe.cpp
 OFILE = $(CFILE:.cpp=.o)
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = RPN
+NAME =  PmergeMe
 
 all: $(NAME)
 
