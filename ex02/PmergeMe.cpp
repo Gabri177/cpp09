@@ -83,8 +83,8 @@ void								PmergeMe::addNum(int num){
 
 	if(num <= 0)
 		throw std::invalid_argument("Error.");
-		c_vec.push_back(num);
-		c_deq.push_back(num);
+	c_vec.push_back(num);
+	c_deq.push_back(num);
 }
 
 void								PmergeMe::print(){

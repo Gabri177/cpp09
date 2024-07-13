@@ -21,7 +21,7 @@ std::pair<std::string, std::string> 	split(const std::string & line, char delimi
 
 void									BitcoinExchange::readDataBaseFromFile(const std::string & file_name){
 
-	std::ifstream	file(file_name);
+	std::ifstream	file(file_name.c_str());
 	if(!file.is_open())
 		throw std::runtime_error("Error: can not open the file!!!");
 	std::string		new_line;
@@ -29,7 +29,10 @@ void									BitcoinExchange::readDataBaseFromFile(const std::string & file_name
 	while (std::getline(file, new_line)){
 
 		std::pair<std::string, std::string> key_valStr = split (new_line, ',');
-		double val = std::stod(key_valStr.second);
+		char	*end;
+		double val = std::strtod(key_valStr.second.c_str(), &end);
+		if (*end != '\0')
+			throw std::runtime_error("Error: read file!!!");
 		_data[key_valStr.first] = val;	
 	}
 }
@@ -47,7 +50,7 @@ double									BitcoinExchange::getBitcoinRate(const std::string & date) const{
 
 void									BitcoinExchange::printValueExchanged(const std::string & input_file) const{
 
-	std::ifstream	infile(input_file);
+	std::ifstream	infile(input_file.c_str());
 	if (!infile.is_open())
 		throw std::runtime_error("Error: can not open the input file!!!");
 	std::string		new_line;
@@ -58,7 +61,12 @@ void									BitcoinExchange::printValueExchanged(const std::string & input_file
 			std::pair<std::string, std::string> key_valStr = split(new_line, '|');
 			std::string	searchDate = key_valStr.first;
 			try{
-				double	val = std::stod(key_valStr.second);
+				char *end;
+				double	val = std::strtod(key_valStr.second.c_str(), &end);
+				if (*end != '\0'){
+					std::cout << "No current value!" << std::endl;
+					continue;
+				}
 				if (val < 0){
 
 					std::cout << "Error: not a positive number." << std::endl;
